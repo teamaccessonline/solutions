@@ -182,6 +182,13 @@
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
 							"pm.test(\"VS Address found\", function () {",
 							"    pm.response.to.have.status(200);",
+							"",
+							" var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"DNS_DEST\",jsonData.destination);",
+							"address = (pm.collectionVariables.get(\"DNS_DEST\")).split(\":\");",
+							"pm.collectionVariables.set('VS_IP', address[0] );",
+							"    ",
+							"    ",
 							"});",
 							"} else ",
 							"pm.test(\"VS does not exist\", function () {",
@@ -189,10 +196,9 @@
 							"});",
 							"",
 							"",
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.collectionVariables.set(\"DNS_DEST\",jsonData.destination);",
-							"address = (pm.collectionVariables.get(\"DNS_DEST\")).split(\":\");",
-							"pm.collectionVariables.set('VS_IP', address[0] );",
+							"",
+							"",
+							"",
 							"",
 							"",
 							"",
@@ -1071,67 +1077,67 @@
 	],
 	"variable": [
 		{
-			"id": "d72c4f91-147f-4a1d-968c-8f05b84808dd",
+			"id": "93bb4a05-a602-4887-bc80-805f69ff7ada",
 			"key": "APP_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "921b271d-8a86-45d3-b652-38b82b66bdc5",
+			"id": "dadf89a1-2819-4bbc-8de5-28dca63e166c",
 			"key": "PARTITION_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "5aca1eaa-b46e-4daa-876d-9c2a9e96cb95",
+			"id": "b28ac63b-3734-4c21-96b2-7689198024a0",
 			"key": "PATH_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "b319a73f-31fc-4a9b-9e13-a338685a326c",
+			"id": "d2f99198-2366-40d1-849d-4972d77dcee5",
 			"key": "PRIOR_RESPONSE",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "b282b975-a3a7-48bc-9e11-1ee05646ad05",
+			"id": "5a825915-7dcc-4bc1-90ac-8c0c07b682d3",
 			"key": "PARITITION_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e3affa8e-e78d-4282-876d-20d30ca7a38a",
+			"id": "a13b68af-8559-4804-b81d-32d362b12501",
 			"key": "DNS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fe366bd3-0a0b-4bac-a226-a53466e73c5b",
+			"id": "951ba613-677e-4fd8-9295-501e20934933",
 			"key": "VS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "241b3c7c-26bf-49ce-b165-f8024c86a3cd",
+			"id": "e490b37c-176d-48cc-84cd-84d2d4729e1a",
 			"key": "DNS_DESTINATION",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "00e8caf6-3add-4989-a727-efbb55122ec0",
+			"id": "d321628d-dbc4-4769-b3ad-a1c033fb9fa2",
 			"key": "IP",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "9b39c4af-4201-4ad5-ad27-e92269899c8e",
+			"id": "b8a9629d-29eb-4440-856d-c59f99968c92",
 			"key": "DNS_DEST",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "11c49f27-7d51-49af-9949-f3a294c8fa5b",
+			"id": "dd332d37-da42-46f0-9120-dc632fdeb0a9",
 			"key": "VS_IP",
 			"value": "",
 			"type": "string"
