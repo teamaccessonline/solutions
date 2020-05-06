@@ -16,7 +16,7 @@ Host, where you will be able to access the BIG-IP management interfaces (HTTPS, 
 |                                                                                               |
 | 2. Open the Command Prompt                                                                    |
 |                                                                                               |
-| 3. Type **cd c:\\library\\solutions\\[solution #]\\postman**                                     |
+| 3. Type **cd c:\\solutions\\[solution #]\\postman**                                           |
 |                                                                                               |
 | 4. Type **Newman run [name of postman collection] -e [name of environment variables] -k**     |
 |                                                                                               |

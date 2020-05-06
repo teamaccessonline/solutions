@@ -28,13 +28,13 @@ Access Blueprint Revision
 
 Postman Collection(s)
 ^^^^^^^^^^^^^^^^^^^^
-  - vpn.acme.com-ad-create.json
-  - vpn.acme.com-ad-delete.json
+  - solution1-create.postman_collection.json
+  - solution1-delete.postman_collection.json
 
 
 APM Profile(s) 
 ^^^^^^^^^^^^
-  - profile_Common_vpn.acme.com-psp.conf.tar
+  - profile_Common_solution1-psp.conf.tar
 
 
 BIG-IP Versions Tested
