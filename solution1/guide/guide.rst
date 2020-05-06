@@ -5,6 +5,8 @@ The Policy
 Policy Walk-Through
 ----------------------
 
+|image001|     
+
 1. In this policy a user enters their credentials in the logon page agent.  
     - Those credentials are collected, stored as the default system session variables of session.logon.last.username and session.logon.last.password.                                
           
@@ -14,7 +16,7 @@ Policy Walk-Through
 5. If unsuccessful, the user proceeds down the fallback branch and denied access via the Deny Terminal
                                        
 
-|image001|                                                                                      
+                                                                                
 
 
 
