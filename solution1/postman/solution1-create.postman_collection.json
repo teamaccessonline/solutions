@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "78502779-317b-4213-b02e-e828b651f6cc",
+		"_postman_id": "cd194d14-1d8e-415d-86a9-6b30fd4e3305",
 		"name": "solution1-create",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "202624aa-f655-4b19-a286-430946c4f29c",
+						"id": "254a448e-6da9-401d-81fa-120b26f10586",
 						"exec": [
 							"",
 							"if (responseCode.code === 200) {",
@@ -31,7 +31,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "80a09f2e-31e5-4251-8f35-4fa3e153f0dd",
+						"id": "f6fbdacf-052a-403e-9bb6-4154c4195a0c",
 						"exec": [
 							"pm.collectionVariables.set(\"DNS_NAME\", \"solution1.acme.com\");",
 							"pm.collectionVariables.set(\"VS_NAME\", \"solution1\");",
@@ -85,7 +85,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "74ead222-a0b6-4d7a-b640-af99636bca05",
+						"id": "dd82f8db-6464-4faf-9069-2988294d16b1",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -100,7 +100,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "720946b1-85bd-41b0-ab26-696a94b6defe",
+						"id": "d4c3af5a-edd9-4a21-a49d-abfc9fa67dff",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -174,7 +174,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "14012fff-c33e-4c20-9af9-1605a67eba06",
+						"id": "f7814f1c-74aa-49a9-a0cf-340f5c1c4b01",
 						"exec": [
 							"var VS_NAME = pm.collectionVariables.get(\"VS_NAME\");\r",
 							"\r",
@@ -243,7 +243,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "28d68bc0-91ff-4532-8897-72e533e67d7e",
+						"id": "bea9abef-f3bd-4509-8c48-2e5bef9227c8",
 						"exec": [
 							"\r",
 							"var jsonData = JSON.parse(responseBody);\r",
@@ -299,7 +299,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "58f8d822-bcf6-4faa-a21e-1aa7a57cb3bf",
+						"id": "d01bbd17-0b4b-4e40-a7ec-cc4f4f43aca6",
 						"exec": [
 							"",
 							"",
@@ -344,7 +344,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5cd1eecf-9599-43cd-b815-2b69245179d0",
+						"id": "4bc448e5-2ffe-4a47-bb49-26de15a5375a",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -360,7 +360,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "253c8478-1886-47a7-8438-8aca149a6fff",
+						"id": "09065710-d336-4382-ad2a-6d1e6418d6f4",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -426,7 +426,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eac3686b-0977-4a41-ace4-6006329a82b0",
+						"id": "47293b06-74c4-4c6f-9e4b-c51b56c83605",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -442,7 +442,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7e87315a-6d06-42cf-96ee-cc0cd5b0356c",
+						"id": "7c7528a7-3592-4885-b45d-7ef763f61fef",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -498,7 +498,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "54ec61e9-e01f-4750-808e-3f91fe5bcb45",
+						"id": "88361c94-2998-4aa9-8074-aae80c4b5a3d",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -516,7 +516,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0fcc6372-4e9e-4bee-bb6b-251bb8bc8006",
+						"id": "e296b426-84c4-44b7-bca7-00952dcc0891",
 						"exec": [
 							"setTimeout(function(){}, 2000);",
 							"",
@@ -586,7 +586,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "73f461a7-e5cc-40c6-98e0-ceea6f22a913",
+						"id": "5a19730a-c4b1-4026-a2a8-44040c20f39b",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -616,7 +616,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e11e40c1-334c-41e0-b5a0-8e1843dd8609",
+						"id": "62fc464a-3a2d-4a6a-8ae9-4265d399026d",
 						"exec": [
 							"setTimeout(function(){}, 2000);",
 							"",
@@ -677,7 +677,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "81dbea7b-296f-47bf-a654-71de80dc21aa",
+						"id": "5fda84e6-4962-4cff-bff6-e2e6414f456a",
 						"exec": [
 							"",
 							"if (responseCode.code === 200) {",
@@ -696,7 +696,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "99bfdfbc-5283-4e5d-b86a-1b0801fc7e7e",
+						"id": "53ce3eaa-b66c-4740-b5e8-51ae5e1c3943",
 						"exec": [
 							"",
 							"",
@@ -747,12 +747,407 @@
 			"response": []
 		},
 		{
+			"name": "bigip5-Determine if bigip2 is existing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2bc6c05-326d-45fa-b927-c1a279e92348",
+						"exec": [
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.collectionVariables.set(\"LENGTH\", jsonData.items.length );\r",
+							"for (var i = 0; i < jsonData.items.length; i++) {\r",
+							"pm.collectionVariables.set(\"RAN\", \"RAN\" );\r",
+							"if ( jsonData.items[i].name  === \"bigip2.f5lab.local\" ) {\r",
+							"\r",
+							"\r",
+							"\tpostman.setNextRequest(\"bigip2-Create Connectivity Profile\");\r",
+							"}\r",
+							"}\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"server"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip_add - bigip2 to bigip5",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"command\":\"run\",\r\n\t\"options\":[\r\n\t\t{\r\n\t\t\t\"ssh-password\":\"admin\",\r\n\t\t\t\"admin@10.1.1.5\":\"\"\r\n\t\t}\r\n\t]\r\n} "
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/bigip_add",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"bigip_add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip2.f5lab.local - big3d_install",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"command\":\"run\",\r\n\t\"options\":[\r\n\t\t{\r\n\t\t\t\"ssh-password\":\"admin\",\r\n\t\t\t\"admin@10.1.1.5\":\"\"\r\n\t\t}\r\n\t]\r\n} "
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/big3d_install",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"big3d_install"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Server -  BIG-IP2 to BIG-IP5",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"bigip2.f5lab.local\",\n\t\"datacenter\": \"/Common/DC2\",\n\t\"virtualServerDiscovery\": \"disabled\",\n\t        \"addresses\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"10.1.10.5\",\n\t\t\t\t\t\"deviceName\": \"bigip2.f5lab.local\",\n\t\t\t\t\t\"translation\": \"none\"\n\t\t\t\t}\n\t\t\t]\n\t\n}"
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"server"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip2-Check Scope for existing assignment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d4d400e3-865e-4192-b34c-3ac336e5a1ef",
+						"exec": [
+							"var VS_NAME = pm.collectionVariables.get(\"VS_NAME\");\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"if(!jsonData.length) {\r",
+							" if ( jsonData.Description  === VS_NAME ) {\r",
+							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS\", jsonData.IPAddress.IPAddressToString );\r",
+							"\tpostman.setNextRequest(\"bigip2-Create Connectivity Profile\");  \r",
+							" }\r",
+							"} else {\r",
+							"\r",
+							"\r",
+							"for (var i = 0; i < jsonData.length; i++) {\r",
+							"\r",
+							"if ( jsonData[i].Description  === VS_NAME ) {\r",
+							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS\", jsonData[i].IPAddress.IPAddressToString );\r",
+							"\tpostman.setNextRequest(\"bigip2-Create Connectivity Profile\");\r",
+							"}\r",
+							"}\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://10.1.20.6:81/addr/scope-status?scope={{BIGIP2_SCOPE}}",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"20",
+						"6"
+					],
+					"port": "81",
+					"path": [
+						"addr",
+						"scope-status"
+					],
+					"query": [
+						{
+							"key": "scope",
+							"value": "{{BIGIP2_SCOPE}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip2-Check for next available address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf8a6c67-c3fb-4ef5-b6d7-b7a915f5e48e",
+						"exec": [
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"BIGIP2_ADDRESS\",jsonData.address);\r",
+							"\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('OK', function() {\r",
+							"  pm.expect(jsonData).to.have.property('address');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://10.1.20.6:81/addr/available?scope={{BIGIP2_SCOPE}}",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"20",
+						"6"
+					],
+					"port": "81",
+					"path": [
+						"addr",
+						"available"
+					],
+					"query": [
+						{
+							"key": "scope",
+							"value": "{{BIGIP2_SCOPE}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip2-Checkout Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08991504-8745-4b98-9589-f87f7d171ef7",
+						"exec": [
+							"",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"OK\", function () {",
+							" ",
+							"    pm.expect(jsonData.status).to.eql(\"Success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"scope\":\"{{BIGIP2_SCOPE}}\",\n\"address\":\"{{BIGIP2_ADDRESS}}\",\n\"vs_name\":\"{{VS_NAME}}\"\n}"
+				},
+				"url": {
+					"raw": "http://10.1.20.6:81/addr/checkout",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"20",
+						"6"
+					],
+					"port": "81",
+					"path": [
+						"addr",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "bigip2-Create Connectivity Profile",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0a24a303-7b26-4ade-bda4-cb31b467bd08",
+						"id": "c8bbf7cb-0ac2-4a51-ae64-5239cb4edb19",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -767,7 +1162,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "15aa79e0-882d-4a6e-844e-018d02cc8f1c",
+						"id": "2bae5b72-324f-4484-b702-80b495b53445",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -809,7 +1204,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"name\": \"{{APP_NAME}}-cp\"\n}"
+					"raw": "{\n\"name\": \"{{VS_NAME}}-cp\"\n}"
 				},
 				"url": {
 					"raw": "https://10.1.1.5/mgmt/tm/apm/profile/connectivity/",
@@ -838,7 +1233,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d87395df-6584-45e7-8787-1b249de67d25",
+						"id": "e13549fa-d48e-4e9c-846a-76de9f46168b",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -853,7 +1248,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1a0e4511-1405-4f53-a15e-1cb307c568df",
+						"id": "7e89a8e0-3354-4925-b32d-21f1789e1ff4",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -922,7 +1317,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "10f512ef-db61-41d0-b7b3-a7e44948fab8",
+						"id": "9cb9e447-8222-4c95-a154-b6b70c8c3bf2",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -938,7 +1333,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0d06c0cd-02fa-4a08-a821-81f34b34d563",
+						"id": "96dd2223-c2e3-4231-b232-4af4e8f147c0",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -977,7 +1372,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"class\": \"ADC\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{PATH_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{APP_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                   \"{{BIGIP3_VIP1}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{APP_NAME}}-clientssl\",\r\n                \"pool\": \"ad-pool\",\r\n        \t\t\"snat\": \"auto\",\r\n        \t\t\"profileAccess\": {\r\n        \t\t\t\"use\": \"{{APP_NAME}}-psp\"\r\n        \t\t\t},\r\n\t\t\t\t\"profileConnectivity\": {\r\n                \t\"bigip\": \"/Common/{{APP_NAME}}-cp\"\r\n\t\t\t\t\t}\r\n                },\r\n\t\t\t\t\"{{APP_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"http://files.f5lab.local/15.x/profile_Common_{{APP_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n                \"{{APP_NAME}}-clientssl\": {\r\n                    \"class\": \"TLS_Server\",\r\n                    \"certificates\": [\r\n                        {\r\n                        \"certificate\": \"tlsserver_local_cert\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                },\r\n                \"ad-pool\": {\r\n                    \"class\": \"Pool\",  \r\n                        \"members\": [\r\n                            {\r\n                            \"serverAddresses\": [\r\n                            \"10.1.20.7\"\r\n                            ],\r\n                            \"servicePort\": 3389\r\n                            }\r\n                        ],\r\n                    \"monitors\": [\r\n                        \"icmp\"\r\n                    ]\r\n                }\r\n\r\n            }\r\n       }\r\n    }\r\n\r\n}\r\n                \r\n             \r\n          \r\n       \r\n    \r\n"
+					"raw": "{\r\n    \"class\": \"ADC\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{PATH_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                   \"{{BIGIP2_ADDRESS}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{VS_NAME}}-clientssl\",\r\n                \"pool\": \"ad-pool\",\r\n        \t\t\"snat\": \"auto\",\r\n        \t\t\"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS_NAME}}-psp\"\r\n        \t\t\t},\r\n\t\t\t\t\"profileConnectivity\": {\r\n                \t\"bigip\": \"/Common/{{VS_NAME}}-cp\"\r\n\t\t\t\t\t}\r\n                },\r\n\t\t\t\t\"{{VS_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{VS_NAME}}/policies/profile_Common_{{VS_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n                \"{{VS_NAME}}-clientssl\": {\r\n                    \"class\": \"TLS_Server\",\r\n                    \"certificates\": [\r\n                        {\r\n                        \"certificate\": \"tlsserver_local_cert\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                },\r\n                \"ad-pool\": {\r\n                    \"class\": \"Pool\",  \r\n                        \"members\": [\r\n                            {\r\n                            \"serverAddresses\": [\r\n                            \"10.1.20.7\"\r\n                            ],\r\n                            \"servicePort\": 3389\r\n                            }\r\n                        ],\r\n                    \"monitors\": [\r\n                        \"icmp\"\r\n                    ]\r\n                }\r\n\r\n            }\r\n       }\r\n    }\r\n\r\n}\r\n                \r\n             \r\n          \r\n       \r\n    \r\n"
 				},
 				"url": {
 					"raw": "https://10.1.1.5/mgmt/shared/appsvcs/declare",
@@ -999,12 +1394,12 @@
 			"response": []
 		},
 		{
-			"name": "bigip5-Add bigip3 Application VS to Server",
+			"name": "bigip5-Add bigip2 Application VS to Server",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "d2826856-9f8e-4f85-8cba-a060fed7f00a",
+						"id": "98a9d75c-2b43-40c4-955f-2428991461f4",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -1022,7 +1417,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0406ff42-f9ed-44c5-886b-ff9e409429ba",
+						"id": "34853fb9-def3-4a0d-9149-9b65c26cd924",
 						"exec": [
 							"setTimeout(function(){}, 2000);",
 							"",
@@ -1062,10 +1457,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"/{{PARTITION_NAME}}/{{PATH_NAME}}/{{APP_NAME}}\",\r\n\"destination\": \"{{BIGIP3_VIP1}}:443\"\r\n}"
+					"raw": "{\r\n\"name\": \"/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS_NAME}}\",\r\n\"destination\": \"{{BIGIP2_ADDRESS}}:443\"\r\n}"
 				},
 				"url": {
-					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip3.f5lab.local/virtual-servers/",
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip2.f5lab.local/virtual-servers/",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -1078,7 +1473,7 @@
 						"tm",
 						"gtm",
 						"server",
-						"~Common~bigip3.f5lab.local",
+						"~Common~bigip2.f5lab.local",
 						"virtual-servers",
 						""
 					]
@@ -1087,12 +1482,12 @@
 			"response": []
 		},
 		{
-			"name": "bigip5-Add bigip3 Application to WideIP Pool",
+			"name": "bigip5-Add bigip2 Application to WideIP Pool",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a3cf5e14-ca05-4bfd-8cf4-27bf88cd03bb",
+						"id": "ea0756ce-9564-49a7-b6cf-b3b8e6816689",
 						"exec": [
 							"setTimeout(function(){}, 2000);",
 							"",
@@ -1108,7 +1503,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3d1a8a9b-4411-4d6f-91d0-6a3ab7291108",
+						"id": "2c05f52a-c498-4e7f-af14-d5fd0df577aa",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -1150,10 +1545,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n\r\n{\r\n\"name\":\"bigip3.f5lab.local:/{{PARTITION_NAME}}/{{PATH_NAME}}/{{APP_NAME}}\"\r\n\t\r\n\t\r\n}"
+					"raw": "\r\n\r\n{\r\n\"name\":\"bigip2.f5lab.local:/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS_NAME}}\"\r\n\t\r\n\t\r\n}"
 				},
 				"url": {
-					"raw": "https://10.1.1.11/mgmt/tm/gtm/pool/a/~{{APP_NAME}}~Application~{{APP_NAME}}-pool/members",
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/pool/a/~{{VS_NAME}}~Application~{{VS_NAME}}-pool/members",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -1167,7 +1562,7 @@
 						"gtm",
 						"pool",
 						"a",
-						"~{{APP_NAME}}~Application~{{APP_NAME}}-pool",
+						"~{{VS_NAME}}~Application~{{VS_NAME}}-pool",
 						"members"
 					]
 				}
@@ -1179,7 +1574,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e2b12b78-2d96-4077-9557-2293254f581a",
+				"id": "94ac05e7-33c7-4933-a912-6d780164a68c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1189,7 +1584,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1ca079da-50bf-42d6-90cf-535fb509d7cc",
+				"id": "57eb3759-f6b1-42b0-b964-3e303385d4c5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1199,44 +1594,56 @@
 	],
 	"variable": [
 		{
-			"id": "ee8287f0-c6c6-4f1f-942f-aff7a6bbe119",
+			"id": "754d9cd5-d827-4ecc-8b0b-185b28eaeefb",
 			"key": "DNS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "eb51d48c-ee5d-473a-a069-6a495a0c677b",
+			"id": "5d710ea3-ae86-48ef-88f1-004429135115",
 			"key": "PARTITION_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f06af38a-c161-4e06-a0bb-02412edbf211",
+			"id": "dbcbb9a4-ee6a-4cba-a766-9c6059830c01",
 			"key": "PATH_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d845a630-71e4-4454-942e-d826d517cf11",
+			"id": "bc130180-a14a-4090-8227-3701b556c520",
 			"key": "VS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "9478b13c-a6bf-4d9e-ae25-cf80529a2083",
+			"id": "73badb1a-ce9f-4110-9224-7eb4abddf895",
 			"key": "PRIOR_RESPONSE",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "1a31597c-de87-4347-a56f-886a6f749737",
+			"id": "696da203-2e38-4b6e-932d-e37949262cad",
 			"key": "BIGIP1_ADDRESS",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "909f8739-8124-488f-ad5b-31dc834328de",
+			"id": "62e5d446-5f72-4ad1-b8a8-f350a10929ca",
 			"key": "LENGTH",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "8b645eb4-8f93-4bd1-9d39-5e172fee18ea",
+			"key": "RAN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "6cc57049-bd99-4218-9915-2eae87d7b8db",
+			"key": "BIGIP2_ADDRESS",
 			"value": "",
 			"type": "string"
 		}
