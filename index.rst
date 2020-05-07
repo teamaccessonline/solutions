@@ -23,5 +23,6 @@ https://github.com/teamaccessonline/library/tree/master/solutions/template
    deploy.rst
    multi-datacenter/multi-datacenter.rst
    solution*/solution*
+   test.rst
 
    
