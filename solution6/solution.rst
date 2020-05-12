@@ -30,13 +30,13 @@ Access Blueprint Revision
 
 Postman Collection(s)
 ^^^^^^^^^^^^^^^^^^^^
-  - kerb.acme.com-create.postman_collection.json
-  - kerb.acme.com-delete.postman_collection.json
+  - solution6-create.postman_collection.json
+  - solution6-delete.postman_collection.json
 
 
 APM Profile(s) 
 ^^^^^^^^^^^^
-  - profile_Common_kerb.acme.com-psp.conf.tar
+  - profile_Common_solution6-psp.conf.tar
 
 
 BIG-IP Versions Tested
