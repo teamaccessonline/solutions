@@ -28,17 +28,17 @@ Configuration Comments
 
 Access Blueprint Revision
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  - 41
+  - 44
 
 Postman Collection(s)
 ^^^^^^^^^^^^^^^^^^^^
-  - portal.acme.com-ad-create.json
-  - portal.acme.com-ad-delete.json
+  - solution2-create.postman_collection.json
+  - solution2-delete.postman_collection.json
 
 
 APM Profile(s) 
 ^^^^^^^^^^^^
-  - profile_Common_portal.acme.com-psp.conf.tar
+  - profile_Common_solution2-psp.conf.tar
 
 
 BIG-IP Versions Tested
