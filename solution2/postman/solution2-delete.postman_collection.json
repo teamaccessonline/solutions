@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "839eed5a-3011-4e18-b26d-55602f49f770",
-		"name": "portal.acme.com-1-delete",
+		"_postman_id": "89e12031-9e8d-4aca-8c4f-639efd7b1414",
+		"name": "solution2-delete",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4856b152-8a0f-478a-8006-9b0d105e38c2",
+						"id": "2bbc28dd-fe63-489b-8b3d-3c70550fe523",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -24,6 +24,19 @@
 							"});",
 							"",
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "52022507-391f-4bd5-a309-4f51b35bb93f",
+						"exec": [
+							"pm.collectionVariables.set(\"DNS_NAME\", \"solution2.acme.com\");",
+							"pm.collectionVariables.set(\"VS_NAME\", \"solution2\");",
+							"pm.collectionVariables.set(\"PATH_NAME\", \"solution2\");",
+							"pm.collectionVariables.set(\"PARTITION_NAME\", \"solution2\");"
 						],
 						"type": "text/javascript"
 					}
@@ -72,7 +85,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6efb77bc-338e-42ed-ba84-590c098ef5e1",
+						"id": "836a7ac8-95e7-454f-9b64-9cbebe2d84d1",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -87,7 +100,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d8c2cd52-71be-42f2-b395-a546718fe787",
+						"id": "dcdf3fc9-3725-4772-9217-87ffeba6cbcf",
 						"exec": [
 							"",
 							"if (responseCode.code === 200) {",
@@ -126,7 +139,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n{\n\t\"op\":\"remove\",\n\t\"path\":\"{{APP_NAME}}/Application\"\n \n}\n]"
+					"raw": "[\n{\n\t\"op\":\"remove\",\n\t\"path\":\"{{VS_NAME}}/Application\"\n \n}\n]"
 				},
 				"url": {
 					"raw": "https://10.1.1.11/mgmt/shared/appsvcs/declare",
@@ -148,12 +161,12 @@
 			"response": []
 		},
 		{
-			"name": "bigip5-Delete bigip1 Server VS",
+			"name": "bigip5-Get bigip1 Server VS address",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d8b45279-190f-48fa-92c3-eb63b73cdd28",
+						"id": "2c154607-4480-4a39-a768-642bda551396",
 						"exec": [
 							"setTimeout(function(){}, 1000);"
 						],
@@ -163,12 +176,19 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "586d2b60-c5a8-4f03-a4f2-cd9660c63cf2",
+						"id": "ed37e8b7-688a-4f71-84b9-cd46e3fa6c67",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
-							"pm.test(\"VS deleted from server\", function () {",
+							"pm.test(\"VS Address found\", function () {",
 							"    pm.response.to.have.status(200);",
+							"",
+							" var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"DNS_DEST\",jsonData.destination);",
+							"address = (pm.collectionVariables.get(\"DNS_DEST\")).split(\":\");",
+							"pm.collectionVariables.set('BIGIP1_ADDRESS', address[0] );",
+							"    ",
+							"    ",
 							"});",
 							"} else ",
 							"pm.test(\"VS does not exist\", function () {",
@@ -176,16 +196,10 @@
 							"});",
 							"",
 							"",
-							"var DC2_APM = pm.environment.get(\"DC2_APM\");",
 							"",
-							"if (DC2_APM === 'true') {",
 							"",
-							"} else {",
-							"postman.setNextRequest(\"bigip1-Test AS3 is running\");",
-							"pm.test(\"Environment Variable set to Single Data Center APM \", function () {",
-							"    pm.expect(pm.environment.get(\"DC2_APM\")).to.equal(\"false\");",
-							"});",
-							"}",
+							"",
+							"",
 							"",
 							"",
 							"",
@@ -195,6 +209,9 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -211,7 +228,7 @@
 						}
 					]
 				},
-				"method": "DELETE",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -224,7 +241,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip1.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{APP_NAME}}",
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip1.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -239,19 +256,83 @@
 						"server",
 						"~Common~bigip1.f5lab.local",
 						"virtual-servers",
-						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{APP_NAME}}"
+						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "bigip5-Delete bigip3 Server VS",
+			"name": "bigip1- Checkin Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ddc4d06-9af6-4c4e-9699-49eb373981b3",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"",
+							"",
+							"  if(jsonData.status === \"Success\") {",
+							"pm.test(\"Address returned to Scope\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"});",
+							"} else {",
+							"",
+							"pm.test(\"Address not assigned in Scope\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"}",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://10.1.20.6:81/addr/checkin?address={{BIGIP1_ADDRESS}}",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"20",
+						"6"
+					],
+					"port": "81",
+					"path": [
+						"addr",
+						"checkin"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "{{BIGIP1_ADDRESS}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip5-Delete bigip1 Server VS",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e24c44ed-8b9d-47b3-9714-c7d75508b0ed",
+						"id": "150bf613-4aea-4dea-bb76-af55bb45b158",
 						"exec": [
 							"setTimeout(function(){}, 1000);"
 						],
@@ -261,7 +342,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "533c6b2b-05d8-49e2-9a4d-7976fffb85be",
+						"id": "a7fe6a45-df78-4065-827d-579f988c9392",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -272,6 +353,19 @@
 							"pm.test(\"VS does not exist\", function () {",
 							"    pm.response.to.have.status(404);",
 							"});",
+							"",
+							"",
+							"",
+							"var DC2_APM = pm.environment.get(\"DC2_APM\");",
+							"",
+							"if (DC2_APM === 'true') {",
+							"",
+							"} else {",
+							"postman.setNextRequest(\"bigip1-Test AS3 is running\");",
+							"pm.test(\"Environment Variable set to Single Data Center APM \", function () {",
+							"    pm.expect(pm.environment.get(\"DC2_APM\")).to.equal(\"false\");",
+							"});",
+							"}",
 							""
 						],
 						"type": "text/javascript"
@@ -307,7 +401,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip3.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{APP_NAME}}",
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip1.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -320,9 +414,254 @@
 						"tm",
 						"gtm",
 						"server",
-						"~Common~bigip3.f5lab.local",
+						"~Common~bigip1.f5lab.local",
 						"virtual-servers",
-						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{APP_NAME}}"
+						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip5-Get bigip2 Server VS address",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "05b3ccbb-7d63-43a8-a293-078ebf217727",
+						"exec": [
+							"setTimeout(function(){}, 1000);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d95a6668-a2ed-4d6a-bb61-732754629be0",
+						"exec": [
+							"if (responseCode.code === 200) {",
+							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
+							"pm.test(\"VS Address found\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							" var jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"DNS_DEST\",jsonData.destination);",
+							"address = (pm.collectionVariables.get(\"DNS_DEST\")).split(\":\");",
+							"pm.collectionVariables.set('BIGIP2_ADDRESS', address[0] );",
+							"    ",
+							"    ",
+							"});",
+							"} else ",
+							"pm.test(\"VS does not exist\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip2.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"server",
+						"~Common~bigip2.f5lab.local",
+						"virtual-servers",
+						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip2- Checkin Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0a52f1f6-07a2-45e9-8d2d-587c39c57abf",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"",
+							"",
+							"  if(jsonData.status === \"Success\") {",
+							"pm.test(\"Address returned to Scope\", function () {",
+							"    pm.response.to.have.status(200);",
+							"",
+							"});",
+							"} else {",
+							"",
+							"pm.test(\"Address not assigned in Scope\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://10.1.20.6:81/addr/checkin?address={{BIGIP2_ADDRESS}}",
+					"protocol": "http",
+					"host": [
+						"10",
+						"1",
+						"20",
+						"6"
+					],
+					"port": "81",
+					"path": [
+						"addr",
+						"checkin"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "{{BIGIP2_ADDRESS}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bigip5-Delete bigip2 Server VS",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b26d46a2-184d-4bdf-82b0-8941ec2f1e69",
+						"exec": [
+							"setTimeout(function(){}, 1000);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c02892aa-34f9-4a0e-8376-bc685ddb5b2e",
+						"exec": [
+							"if (responseCode.code === 200) {",
+							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
+							"pm.test(\"VS deleted from server\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"} else ",
+							"pm.test(\"VS does not exist\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip2.f5lab.local/virtual-servers/~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}",
+					"protocol": "https",
+					"host": [
+						"10",
+						"1",
+						"1",
+						"11"
+					],
+					"path": [
+						"mgmt",
+						"tm",
+						"gtm",
+						"server",
+						"~Common~bigip2.f5lab.local",
+						"virtual-servers",
+						"~{{PARTITION_NAME}}~{{PATH_NAME}}~{{VS_NAME}}"
 					]
 				}
 			},
@@ -334,7 +673,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bd85e70f-2036-436c-85fd-a7ccb302d5d6",
+						"id": "dc2cb060-1059-42ad-b0be-76b8609b7610",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -394,7 +733,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a41d82d8-9351-4953-802e-7e442b8d4264",
+						"id": "98740fde-db0f-4d8f-be83-68ca1f883ceb",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -409,7 +748,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "44499974-b179-485d-8f99-6d233f86ec20",
+						"id": "afc793c5-f0c8-45fa-bcc8-7c24c81b01ff",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -471,7 +810,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f53bfe38-cf82-47ea-ac5e-41a9a4941a97",
+						"id": "8adc094f-8aeb-43b2-9106-3219099a7260",
 						"exec": [
 							"setTimeout(function(){}, 1000);"
 						],
@@ -481,7 +820,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "121be45e-0c98-4c39-adfc-4269bae49ad4",
+						"id": "8f55f7ca-caa1-4c87-86b4-2412150c617c",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -538,7 +877,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://10.1.1.4/mgmt/tm/apm/profile/connectivity/{{APP_NAME}}-cp",
+					"raw": "https://10.1.1.4/mgmt/tm/apm/profile/connectivity/{{VS_NAME}}-cp",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -552,19 +891,19 @@
 						"apm",
 						"profile",
 						"connectivity",
-						"{{APP_NAME}}-cp"
+						"{{VS_NAME}}-cp"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "bigip3-Test AS3 is running",
+			"name": "bigip2-Test AS3 is running",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "74352633-67b5-4eb1-b2df-9e305322fec8",
+						"id": "e6d4e452-8452-49cb-8091-4d2f2845d36f",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -585,7 +924,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a199a8f4-1d88-4765-8d6e-04ba250d6e25",
+						"id": "81f82238-1b78-4911-bc6f-014116f57ddc",
 						"exec": [
 							""
 						],
@@ -631,12 +970,12 @@
 			"response": []
 		},
 		{
-			"name": "bigip3-Delete Application",
+			"name": "bigip2-Delete Application",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e8a08282-b366-4818-b3ad-2b87a5bf1630",
+						"id": "4c354ebd-8838-466c-9dda-826e4e50296d",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -651,7 +990,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5a773ac2-c3b7-4112-a120-177e9c3676ca",
+						"id": "dba70995-4471-422e-b1dc-ad2c49c4cf72",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -685,7 +1024,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n     \"class\": \"AS3\",\n     \"action\": \"remove\",\n     \"persist\": true\n     }"
 				},
 				"url": {
 					"raw": "https://10.1.1.5/mgmt/shared/appsvcs/declare/{{PARTITION_NAME}}",
@@ -708,12 +1047,12 @@
 			"response": []
 		},
 		{
-			"name": "bigip3-Delete Connectivity Profile",
+			"name": "bigip2-Delete Connectivity Profile",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1d3bc6a2-fe7f-43fc-bb6d-cd392ffea383",
+						"id": "43dd0052-d8ee-4cb6-80ed-bb14f774a66a",
 						"exec": [
 							"setTimeout(function(){}, 1000);"
 						],
@@ -723,7 +1062,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ff2ebd5f-a4fd-4164-99cd-bab734a3b3e1",
+						"id": "6d95d04a-2162-457e-8e02-7b30e4cb4abd",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -768,7 +1107,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://10.1.1.5/mgmt/tm/apm/profile/connectivity/{{APP_NAME}}-cp",
+					"raw": "https://10.1.1.5/mgmt/tm/apm/profile/connectivity/{{VS_NAME}}-cp",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -782,19 +1121,19 @@
 						"apm",
 						"profile",
 						"connectivity",
-						"{{APP_NAME}}-cp"
+						"{{VS_NAME}}-cp"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "bigip3-Delete Node",
+			"name": "bigip2-Delete Node",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "28ebbf14-207e-4f74-a300-50b058c9d021",
+						"id": "8b9ab978-caa3-4725-a265-fb104069363a",
 						"exec": [
 							"setTimeout(function(){}, 1000);"
 						],
@@ -804,7 +1143,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "de377fb1-29bd-4ddc-bfc8-5f685ab548b8",
+						"id": "94f7faa7-cf0c-4207-891c-bbc16336d226",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -879,7 +1218,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6324be4f-2188-4c63-b423-62213b29e970",
+				"id": "189280ab-20cd-4354-86e6-312497a1bc1a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -889,7 +1228,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1be06987-24dd-4b98-bd65-c5ff556102bd",
+				"id": "b95f2d9b-c67b-4f31-b815-4b108a1e4be6",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -899,26 +1238,50 @@
 	],
 	"variable": [
 		{
-			"id": "5b5760f4-e2ff-4ea0-bc99-dad54c129b17",
-			"key": "APP_NAME",
-			"value": "portal.acme.com",
+			"id": "00d875ba-506c-4bf8-ad95-1586fa401c73",
+			"key": "DNS_NAME",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "75bd4327-50bf-445e-a14b-9ac9c5854860",
+			"id": "0152d7f8-8b8c-4585-ad5e-05142d411e91",
 			"key": "PARTITION_NAME",
-			"value": "portal",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "263da36e-3caf-4735-9a17-3556c4515b0e",
+			"id": "c192853c-afcc-416a-823c-56cf5fecb177",
 			"key": "PATH_NAME",
-			"value": "portal",
+			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e09a45e8-21fc-42cb-a91c-ce8c227651f5",
+			"id": "b994bce7-d64c-4b5e-a683-96c759805a41",
+			"key": "VS_NAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "2cef848d-d5e3-434c-bd34-5b14029b9f92",
 			"key": "PRIOR_RESPONSE",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "c98efb7c-393d-4a4f-a8b4-0684dc13a9b2",
+			"key": "BIGIP1_ADDRESS",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "402fd85b-1b9d-4ba7-9e7a-5833aa80d5e9",
+			"key": "DNS_DEST",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "32de124c-f3e3-4938-aa3e-8dca7b621402",
+			"key": "BIGIP2_ADDRESS",
 			"value": "",
 			"type": "string"
 		}
