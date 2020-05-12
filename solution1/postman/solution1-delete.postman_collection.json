@@ -1238,79 +1238,49 @@
 	],
 	"variable": [
 		{
-			"id": "93319719-aec7-4bd9-be81-4adac63f5a92",
-			"key": "APP_NAME",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "4b1bd458-86d2-4ff6-a705-8634157e9afa",
-			"key": "PARTITION_NAME",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "82a609f8-98cf-4524-916e-56b43640ccdd",
-			"key": "PATH_NAME",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "370869cd-bac5-46d4-9915-bcd469978f8a",
-			"key": "PRIOR_RESPONSE",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "0ba86dde-71a2-4c1d-995b-d09925981b08",
-			"key": "PARITITION_NAME",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "12d4534a-5a02-472a-bed6-7660ef945fd5",
+			"id": "f89279a9-6804-47d4-9c87-c7971c244abc",
 			"key": "DNS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "72e3e614-1c18-4c90-876a-11619a667631",
+			"id": "af66fa64-4bb9-4759-9357-fbb815258896",
+			"key": "PARTITION_NAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "e0070ad9-34b9-45fe-b12f-5e1b8800fe4c",
+			"key": "PATH_NAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "b1eefd7f-e97f-4f3c-aecf-4fec1be479a1",
 			"key": "VS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "69183413-58e9-4323-8cee-9974be994dcd",
-			"key": "DNS_DESTINATION",
+			"id": "7bfcaf35-832b-4fb8-ad63-095cab2e812d",
+			"key": "PRIOR_RESPONSE",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "71a475fa-74f4-43ac-9923-d69942422d97",
-			"key": "IP",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "6120165b-3641-49d9-aa1c-1129a5a9a267",
-			"key": "DNS_DEST",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "557da587-62b1-4648-9d99-8e7d2ee3e7b9",
-			"key": "VS_IP",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "3d983560-ca05-4d56-845f-b175590630ac",
+			"id": "1887d534-7367-425d-aa05-87a3731a23a1",
 			"key": "BIGIP1_ADDRESS",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "0838c9af-11c5-4144-bbdd-0075e21e64ba",
+			"id": "f75a62ca-4997-44ea-b99b-2a85a3231df0",
+			"key": "DNS_DEST",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "977500ee-d03e-4866-8523-4135ed08052f",
 			"key": "BIGIP2_ADDRESS",
 			"value": "",
 			"type": "string"

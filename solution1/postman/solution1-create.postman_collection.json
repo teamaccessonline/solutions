@@ -178,8 +178,12 @@
 						"exec": [
 							"var VS_NAME = pm.collectionVariables.get(\"VS_NAME\");\r",
 							"\r",
-							"\r",
-							"\r",
+							"if (responseCode.code === 200) {\r",
+							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );\r",
+							"pm.test(\"Scope Request successful\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"}\r",
 							"\r",
 							"var jsonData = pm.response.json();\r",
 							"\r",
@@ -252,7 +256,7 @@
 							"\r",
 							"\r",
 							"var jsonData = pm.response.json();\r",
-							"pm.test('OK', function() {\r",
+							"pm.test('Next Available Address Found', function() {\r",
 							"  pm.expect(jsonData).to.have.property('address');\r",
 							"});"
 						],
@@ -304,7 +308,7 @@
 							"",
 							"",
 							"var jsonData = pm.response.json();",
-							"pm.test(\"OK\", function () {",
+							"pm.test(\"Address checked out\", function () {",
 							" ",
 							"    pm.expect(jsonData.status).to.eql(\"Success\");",
 							"});"
@@ -747,7 +751,7 @@
 			"response": []
 		},
 		{
-			"name": "bigip5-Determine if bigip2 is existing",
+			"name": "bigip5-Determine if bigip2 exists",
 			"event": [
 				{
 					"listen": "test",
@@ -756,15 +760,26 @@
 						"exec": [
 							"\r",
 							"var jsonData = pm.response.json();\r",
+							"var EXISTS = 0;\r",
 							"\r",
-							"pm.collectionVariables.set(\"LENGTH\", jsonData.items.length );\r",
 							"for (var i = 0; i < jsonData.items.length; i++) {\r",
-							"pm.collectionVariables.set(\"RAN\", \"RAN\" );\r",
-							"if ( jsonData.items[i].name  === \"bigip2.f5lab.local\" ) {\r",
+							"\tif (jsonData.items[i].name === \"bigip2.f5lab.local\") {\r",
+							"        \r",
+							"\t\tpm.test(\"BIGIP2 already exists\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"        var EXISTS = 1;\r",
 							"\r",
-							"\r",
-							"\tpostman.setNextRequest(\"bigip2-Create Connectivity Profile\");\r",
+							"\t\tpostman.setNextRequest(\"bigip2-Check Scope for existing assignment\");\r",
+							"\t} \r",
 							"}\r",
+							"\r",
+							"if (EXISTS === 0) {\r",
+							"        \r",
+							"\t\tpm.test(\"BIGIP2 does not exist\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
 							"}\r",
 							"\r",
 							"\r",
@@ -825,7 +840,23 @@
 			"response": []
 		},
 		{
-			"name": "bigip_add - bigip2 to bigip5",
+			"name": "bigip_add-bigip2 to bigip5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ffe477aa-3f36-4528-a987-2ea23b6b3b4c",
+						"exec": [
+							"\r",
+							"\t\tpm.test(\"bigip_add command successfully run\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -874,7 +905,22 @@
 			"response": []
 		},
 		{
-			"name": "bigip2.f5lab.local - big3d_install",
+			"name": "bigip2.f5lab.local-big3d_install",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "add5ba20-5081-486c-bb9f-225cccf980c6",
+						"exec": [
+							"\r",
+							"\t\tpm.test(\"big3d_install command successfully run\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"\t\t});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -923,7 +969,27 @@
 			"response": []
 		},
 		{
-			"name": "Add Server -  BIG-IP2 to BIG-IP5",
+			"name": "Add Server-BIG-IP2 to BIG-IP5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f101c2f5-1dc8-4769-ba93-7934bb4ef3ef",
+						"exec": [
+							"if (responseCode.code === 200) {\r",
+							"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+							"    pm.test(\"BIG-IP2 added\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"} else\r",
+							"    pm.test(\"BIG-IP2 already Exists\", function () {\r",
+							"        pm.response.to.have.status(409);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -979,10 +1045,16 @@
 					"script": {
 						"id": "d4d400e3-865e-4192-b34c-3ac336e5a1ef",
 						"exec": [
+							"\r",
+							"if (responseCode.code === 200) {\r",
+							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );\r",
+							"pm.test(\"Scope Request successful\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"}\r",
+							"\r",
+							"\r",
 							"var VS_NAME = pm.collectionVariables.get(\"VS_NAME\");\r",
-							"\r",
-							"\r",
-							"\r",
 							"\r",
 							"var jsonData = pm.response.json();\r",
 							"\r",
@@ -1055,7 +1127,7 @@
 							"\r",
 							"\r",
 							"var jsonData = pm.response.json();\r",
-							"pm.test('OK', function() {\r",
+							"pm.test('Next Available Address Found', function() {\r",
 							"  pm.expect(jsonData).to.have.property('address');\r",
 							"});"
 						],
@@ -1107,7 +1179,7 @@
 							"",
 							"",
 							"var jsonData = pm.response.json();",
-							"pm.test(\"OK\", function () {",
+							"pm.test(\"Address Checked out\", function () {",
 							" ",
 							"    pm.expect(jsonData.status).to.eql(\"Success\");",
 							"});"
@@ -1594,55 +1666,43 @@
 	],
 	"variable": [
 		{
-			"id": "63dcb918-55c7-4587-ada7-83ec51a17df8",
+			"id": "070756b7-2a34-4b10-8749-0cc9b76057f4",
 			"key": "DNS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "90cef56d-c45a-4c30-b94c-5449c0654bbe",
+			"id": "5a303232-0687-4d18-9f00-47bf8038ee9d",
 			"key": "PARTITION_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "59aa7f76-82dc-415e-b736-18dcb86e820e",
+			"id": "c3216a91-0cc9-4b05-99db-663e2effda04",
 			"key": "PATH_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "0b68c6df-da6b-4ae1-9381-d0dd3866732e",
+			"id": "7e7588dc-a014-4fee-8343-5ed189f2092d",
 			"key": "VS_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "94d2ba8a-2e7f-468f-b48c-111ec38013c4",
+			"id": "db220391-c930-452c-a7a6-862b2bdc69cc",
 			"key": "PRIOR_RESPONSE",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "271efa75-61ba-4509-b185-b0dc20ba9b99",
+			"id": "c99c8e91-774a-497e-a3d1-05f393f7a3b3",
 			"key": "BIGIP1_ADDRESS",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "35d8482a-5b12-497d-8050-b29b80c3f7ea",
-			"key": "LENGTH",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "e716d4da-ea0e-493e-b72c-2eb4a1c96dec",
-			"key": "RAN",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"id": "a2056361-95c8-4fa7-81ca-c087b1cff24f",
+			"id": "9841e144-36a3-4d4c-8706-2cff0da12974",
 			"key": "BIGIP2_ADDRESS",
 			"value": "",
 			"type": "string"
