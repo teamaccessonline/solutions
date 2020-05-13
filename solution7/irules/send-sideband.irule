@@ -1,6 +1,6 @@
 when ACCESS_POLICY_AGENT_EVENT {
 
-	switch -glob [string tolower [HTTP::path]] {
+	switch -glob [string tolower [ACCESS::policy agent_id]] {
 
 		"send-sideband" {
 
