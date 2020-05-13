@@ -5,7 +5,7 @@ when ACCESS_POLICY_AGENT_EVENT {
 		"send-sideband" {
 
 			#established a TCP based sideband connetion to virtual server receive-sideband
-			set conn [connect -protocol TCP -timeout 100 -idle 30 -status conn_status receive-sideband]
+			set conn [connect -protocol TCP -timeout 100 -idle 30 -status conn_status /solution7/receive-sideband]
 
 			#converts the APM session variable to a TCL variable
 			#sends a HTTP requrest over the sideband with the username in a query string 
