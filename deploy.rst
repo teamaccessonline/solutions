@@ -2,11 +2,10 @@ How to Deploy a Solution
 ==========================
 
 
-To gain access to a live sandboxed environment please contact your F5 Account Team.
 
 To access your dedicated lab environment, you will require a web browser
 and Remote Desktop Protocol (RDP) client software. The web browser will be used to
-access the Lab Environement. The RDP client will be used to connect to the Jump
+access the Lab Environment. The RDP client will be used to connect to the Jump
 Host, where you will be able to access the BIG-IP management interfaces (HTTPS, SSH).
 
 +-----------------------------------------------------------------------------------------------+
@@ -20,7 +19,7 @@ Host, where you will be able to access the BIG-IP management interfaces (HTTPS, 
 |                                                                                               |
 | 4. Type **Newman run [name of postman collection] -e [name of environment variables] -k**     |
 |                                                                                               |
-| ..note::  Reference each Solution Guide's Postman Collection section to deploy to determine   |   
+| ..note::  Reference each Solution Guide's Postman Collection section to determine             |   
 |           the appropriate Postman Collection to run                                           |
 |                                                                                               |
 | 5. Access the appropriate BIG-IP using the credentials below                                  |
