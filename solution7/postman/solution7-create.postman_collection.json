@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e1479880-a788-4ef7-97ce-e526f9a613b5",
+		"_postman_id": "e17081c5-90c8-4b6a-b425-5741445b69e9",
 		"name": "solution7-create",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "399668a2-9a19-4572-9599-806655eeb532",
+						"id": "e4af150f-0a27-4f5f-8ca5-55452745e314",
 						"exec": [
 							"",
 							"if (responseCode.code === 200) {",
@@ -32,7 +32,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0cc6df9c-3a56-4782-834e-42e101a3c290",
+						"id": "61f7b83c-7cee-4315-ae70-18c456c10144",
 						"exec": [
 							"pm.collectionVariables.set(\"DNS1_NAME\", \"sp.acme.com\");",
 							"pm.collectionVariables.set(\"VS1_NAME\", \"send-sideband\");",
@@ -88,7 +88,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2bc64231-84b1-41ed-9ef0-c4ee1bd9d769",
+						"id": "88b26122-4a56-4c69-b584-90452026766f",
 						"exec": [
 							"",
 							"",
@@ -140,7 +140,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1920573a-fcde-493a-8963-a111cd9ae213",
+						"id": "b71f13b8-b8ef-4723-a133-fa8201cf50a1",
 						"exec": [
 							"",
 							"",
@@ -184,7 +184,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "47b447fc-cbc9-489b-9146-16869c2aff92",
+						"id": "7380d23c-b552-406b-acc3-1a1a1d41aeff",
 						"exec": [
 							"",
 							"",
@@ -249,7 +249,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "07fd5524-c12a-4624-bb87-e70026709087",
+						"id": "61336a21-51e8-4953-8fd3-132b353fec13",
 						"exec": [
 							"var VS_NAME = pm.collectionVariables.get(\"VS1_NAME\");\r",
 							"\r",
@@ -323,7 +323,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fa9f9bd4-862e-4972-bb3c-1b7ec99bfe1e",
+						"id": "e02708f9-022f-4aad-a118-6690c79bc85a",
 						"exec": [
 							"\r",
 							"var jsonData = JSON.parse(responseBody);\r",
@@ -379,7 +379,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "35026896-00fd-46a9-ae53-5a9b8b884305",
+						"id": "8146f9cc-9577-43dc-8880-2bfc62323ab0",
 						"exec": [
 							"",
 							"",
@@ -424,7 +424,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "11be6efa-bc1f-46fd-93da-958496deba39",
+						"id": "c9d6286b-dd17-446c-8f87-40d5b4ae2cd5",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -440,7 +440,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "17948934-b334-49d2-853d-1fb1ba51b0ac",
+						"id": "09d4c985-617f-4452-8ea4-f7526da138bc",
 						"exec": [
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
 							"",
@@ -478,7 +478,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"class\": \"AS3\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{VS1_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS1_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                   \"{{BIGIP1_ADDRESS1}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{VS1_NAME}}-clientssl\",\r\n                \"clientTLS\": \"{{VS1_NAME}}-serverssl\",\r\n                \"iRules\": [\"{{VS1_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS1_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS1_NAME}}-clientssl\": {\r\n                \"class\": \"TLS_Server\",\r\n                \"authenticationInviteCA\": {\"bigip\":\"/Common/ca.f5lab.local.crt\"},\r\n                \"authenticationTrustCA\": {\"bigip\":\"/Common/ca.f5lab.local.crt\"},\r\n                 \"certificates\": [\r\n                     {\r\n                      \"certificate\": \"tlsserver_local_cert\"\r\n                     }\r\n                  ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                }, \r\n                \"{{VS1_NAME}}-serverssl\": {\r\n                \"class\": \"TLS_Client\"\r\n                },\r\n                \"{{VS1_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS1_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS1_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS1_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n             \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 443,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          },\r\n         \r\n           \"{{VS2_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS2_NAME}}\": {\r\n                \"class\": \"Service_HTTP\",\r\n                \"virtualAddresses\": [\r\n                   \"192.168.0.1\"\r\n                ],\r\n                \"virtualPort\": 80,\r\n                \"iRules\": [\"{{VS2_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS2_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS2_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS2_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS2_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS2_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n              \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 80,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          }\r\n       }\r\n    }\r\n}\r\n       \r\n  "
+					"raw": "{\r\n    \"class\": \"AS3\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{VS1_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS1_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                   \"{{BIGIP1_ADDRESS1}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{VS1_NAME}}-clientssl\",\r\n                \"clientTLS\": \"{{VS1_NAME}}-serverssl\",\r\n                \"iRules\": [\"{{VS1_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS1_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS1_NAME}}-clientssl\": {\r\n                \"class\": \"TLS_Server\",\r\n                 \"certificates\": [\r\n                     {\r\n                      \"certificate\": \"tlsserver_local_cert\"\r\n                     }\r\n                  ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                }, \r\n                \"{{VS1_NAME}}-serverssl\": {\r\n                \"class\": \"TLS_Client\"\r\n                },\r\n                \"{{VS1_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS1_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS1_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS1_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n             \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 443,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          },\r\n         \r\n           \"{{VS2_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS2_NAME}}\": {\r\n                \"class\": \"Service_HTTP\",\r\n                \"virtualAddresses\": [\r\n                   \"192.168.0.1\"\r\n                ],\r\n                \"virtualPort\": 80,\r\n                \"iRules\": [\"{{VS2_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS2_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS2_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS2_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS2_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS2_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n              \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 80,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          }\r\n       }\r\n    }\r\n}\r\n       \r\n  "
 				},
 				"url": {
 					"raw": "https://10.1.1.4/mgmt/shared/appsvcs/declare",
@@ -505,7 +505,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e0814c2f-4bfe-466d-819b-48c0bb4620c1",
+						"id": "7c7261a5-b42b-49b5-be03-57ba87463440",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -521,7 +521,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e165377c-1ce7-4c6d-9f8b-8cdb759aba12",
+						"id": "7866f4f9-a247-4177-8339-f1c67c096cdd",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -577,7 +577,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "29a9e6e7-1334-40c1-8f5f-7cafa1e0a4a8",
+						"id": "a9979c14-9475-4119-a0d5-186b2ca303f3",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -596,7 +596,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "88d4212a-6354-4059-9ff3-7b1ef012c875",
+						"id": "9ce93393-16e5-4ffd-8e94-671ca2292d36",
 						"exec": [
 							""
 						],
@@ -657,7 +657,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0e7918cb-b76d-42a2-96c7-ea130529d5ec",
+						"id": "09bf0b10-4b1c-475b-ba91-be550443e5bd",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -676,7 +676,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "649e7c3d-b8d2-4025-a925-f3410a8d47e2",
+						"id": "d1e087b3-550a-4f2a-b575-b33b9ae2907d",
 						"exec": [
 							""
 						],
@@ -737,7 +737,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1b47918e-fb08-4dad-89ee-959db2b89d03",
+						"id": "52dcc876-60c3-468e-b6ce-e1a4ed8f8a05",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -756,7 +756,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "28857e69-16e3-4a0b-9dcc-c3c5c1141178",
+						"id": "b47bf305-0f38-429a-98d3-0fcdef0d1afc",
 						"exec": [
 							""
 						],
@@ -817,7 +817,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "36f90bbb-3143-4443-aa05-56aeda7388c5",
+						"id": "2b94531a-f841-41f0-b6af-18925ecc1736",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');",
@@ -835,7 +835,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e7f608cc-8d69-45c5-a1c5-e38ca62b007b",
+						"id": "6f6c55a7-4b45-4c84-a684-6a2ff125a092",
 						"exec": [
 							"setTimeout(function () { }, 2000);",
 							"",
@@ -905,7 +905,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a8203e87-198b-4438-8927-110d610ab1d3",
+						"id": "7314ebd3-2ab8-4143-8cc7-0e3e25a64fe0",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -933,7 +933,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1772e895-a904-4c58-a001-3e1f2930b59b",
+						"id": "fea19698-484b-4d35-b7d3-45bfdd9a02c4",
 						"exec": [
 							"setTimeout(function(){}, 5000);",
 							"",
@@ -994,7 +994,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "39880856-aa36-452d-bf55-fad4ad9a2cea",
+						"id": "f43f3509-4305-4599-8dd5-95672057f925",
 						"exec": [
 							"",
 							"if (responseCode.code === 200) {",
@@ -1025,7 +1025,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "79f6f8ac-92ef-4854-9f84-533d1779b8ba",
+						"id": "98bb8f60-a9f8-43b5-a2a8-9845dd14ef8d",
 						"exec": [
 							"",
 							"",
@@ -1081,7 +1081,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "70813b82-d48d-4802-9d8d-07a98425e708",
+						"id": "ccb1be3d-8bb9-48bc-9321-61e23782b27c",
 						"exec": [
 							"\r",
 							"var jsonData = pm.response.json();\r",
@@ -1091,14 +1091,15 @@
 							"\r",
 							"\tif (jsonData.items[i].name === \"bigip2.f5lab.local\") {\r",
 							"\r",
-							"\r",
-							"\t\tpm.test(\"BIGIP2 already exists\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"\t\t});\r",
-							"\r",
-							"\t\tpostman.setNextRequest(\"bigip2-Check Scope for existing assignment\");\r",
+							"            var found = 1;\r",
+							"\t\t\tpostman.setNextRequest(\"bigip2-Check Scope for existing assignment\");\r",
 							"\t}\r",
 							"}\r",
+							" if (found === 1) {\r",
+							"\tpm.test(\"BIGIP2 already exists\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							" }\r",
 							"\r",
 							"\r",
 							""
@@ -1163,7 +1164,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "744b7dfd-f248-4c35-8395-bd2b80b3a43a",
+						"id": "37c3e433-2329-4a97-95a8-290d93a1e7c6",
 						"exec": [
 							"\r",
 							"\t\tpm.test(\"bigip_add command successfully run\", function () {\r",
@@ -1227,7 +1228,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a03cc7f7-dafe-475b-97a8-74fec912e388",
+						"id": "9a67ea72-44a7-4747-8b10-cd6c6742f180",
 						"exec": [
 							"\r",
 							"\t\tpm.test(\"big3d_install command successfully run\", function () {\r",
@@ -1291,7 +1292,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "35562e01-2725-4cdd-886e-e02f44605c2a",
+						"id": "b75cce73-11fa-4bcc-bfdf-e2df81f4effe",
 						"exec": [
 							"if (responseCode.code === 200) {\r",
 							"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
@@ -1360,9 +1361,9 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "72be5e1e-7430-467f-8964-838298810e90",
+						"id": "77c3377f-b2c8-4937-a13b-e4355eec6e3a",
 						"exec": [
-							"var VS_NAME = pm.collectionVariables.get(\"VS_NAME\");\r",
+							"var VS_NAME = pm.collectionVariables.get(\"VS1_NAME\");\r",
 							"\r",
 							"\r",
 							"if (responseCode.code === 200) {\r",
@@ -1377,7 +1378,7 @@
 							"\r",
 							"if(!jsonData.length) {\r",
 							" if ( jsonData.Description  === VS_NAME ) {\r",
-							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS\", jsonData.IPAddress.IPAddressToString );\r",
+							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS1\", jsonData.IPAddress.IPAddressToString );\r",
 							"\tpostman.setNextRequest(\"bigip2-Create Application using AS3\");  \r",
 							" }\r",
 							"} else {\r",
@@ -1386,7 +1387,7 @@
 							"for (var i = 0; i < jsonData.length; i++) {\r",
 							"\r",
 							"if ( jsonData[i].Description  === VS_NAME ) {\r",
-							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS\", jsonData[i].IPAddress.IPAddressToString );\r",
+							"\tpm.collectionVariables.set(\"BIGIP2_ADDRESS1\", jsonData[i].IPAddress.IPAddressToString );\r",
 							"\tpostman.setNextRequest(\"bigip2-Create Application using AS3\");\r",
 							"}\r",
 							"}\r",
@@ -1435,11 +1436,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "eefa0542-693b-4771-9fea-f7f90f9c0793",
+						"id": "f32f679e-f929-413d-89cf-3e61343b8e52",
 						"exec": [
 							"\r",
 							"var jsonData = JSON.parse(responseBody);\r",
-							"pm.collectionVariables.set(\"BIGIP2_ADDRESS\",jsonData.address);\r",
+							"pm.collectionVariables.set(\"BIGIP2_ADDRESS1\",jsonData.address);\r",
 							"\r",
 							"\r",
 							"\r",
@@ -1491,7 +1492,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d8f00839-8d97-4fd5-ac06-3e995bc0c5af",
+						"id": "15bfe59e-44c0-4311-9824-c728d97e9d79",
 						"exec": [
 							"",
 							"",
@@ -1510,7 +1511,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"scope\":\"{{BIGIP2_SCOPE}}\",\n\"address\":\"{{BIGIP2_ADDRESS}}\",\n\"vs_name\":\"{{VS_NAME}}\"\n}"
+					"raw": "{\n\"scope\":\"{{BIGIP2_SCOPE}}\",\n\"address\":\"{{BIGIP2_ADDRESS1}}\",\n\"vs_name\":\"{{VS1_NAME}}\"\n}"
 				},
 				"url": {
 					"raw": "http://10.1.20.6:81/addr/checkout",
@@ -1536,7 +1537,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9604ad78-2fc8-4334-8f53-3f7ea4f77a85",
+						"id": "6a7deafe-f261-4918-bc3e-c0bcfeb324d8",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -1551,7 +1552,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "314bf6d8-826b-4c6a-a377-46fd47d8e971",
+						"id": "48f67bf7-6289-4e6f-a8e5-bc5d743a2824",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -1620,7 +1621,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "713b81ca-4b9e-4400-ade5-dd2409090e7b",
+						"id": "074df37f-0255-46d8-826c-d4255b210909",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');",
@@ -1636,7 +1637,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "dfa6bfcb-3056-4e5d-bd46-c77fc50988a8",
+						"id": "4643b413-d983-434d-81cc-55fdf2b04e7e",
 						"exec": [
 							"",
 							"var PRIOR_RESPONSE = pm.collectionVariables.get(\"PRIOR_RESPONSE\");",
@@ -1669,7 +1670,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"class\": \"ADC\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{PATH_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                 \"{{BIGIP2_ADDRESS}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{VS_NAME}}-clientssl\",\r\n                \"pool\": \"iis-pool\",\r\n        \t\t\"snat\": \"auto\",\r\n        \t\t\"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS_NAME}}-psp\"\r\n        \t\t   }\r\n                },\r\n                \"{{VS_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{VS_NAME}}/policies/profile_Common_{{VS_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n                \"{{VS_NAME}}-clientssl\": {\r\n                    \"class\": \"TLS_Server\",\r\n                    \"authenticationInviteCA\": \"ca.f5lab.local\",\r\n                    \"authenticationTrustCA\": \"ca.f5lab.local\",\r\n                    \"certificates\": [\r\n                        {\r\n                        \"certificate\": \"tlsserver_local_cert\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                },\r\n                \"ca.f5lab.local\": {\r\n        \t\t\t\"class\": \"CA_Bundle\",\r\n        \t\t\t\"label\": \"CA Bundles\",\r\n        \t\t\t\"remark\": \" \",\r\n        \t\t\t\"bundle\": \"-----BEGIN CERTIFICATE-----\\nMIIDazCCAlOgAwIBAgIQJ4DA+pop3K9HGUl4CIxjbjANBgkqhkiG9w0BAQsFADBIMRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxFTATBgoJkiaJk/IsZAEZFgVmNWxhYjEYMBYGA1UEAxMPZGMxLmY1bGFiLmxvY2FsMB4XDTE5MTEyMDIyMDc0NVoXDTI5MTEyMDIyMTc0NVowSDEVMBMGCgmSJomT8ixkARkWBWxvY2FsMRUwEwYKCZImiZPyLGQBGRYFZjVsYWIxGDAWBgNVBAMTD2RjMS5mNWxhYi5sb2NhbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANOejxrkrJD12YIeEkZNjRZ9/OZwFeX+QhVi1uHLiILP+4+3ZiZ/dhVGQLncDfHlJm5hSXpzMMDK+LxmjnWfBcx8xurgDyL6E80ZTnIPBbVJ6Au2IWFXM62NK/qsE+5IF0ptAYzDiWjj75njoVQygMNkdWEPxu1N+Ar7WAR45xghN2wE7d57iCZ53RmrIeGT6equiihns5nUssoOFh/ny9oR6+yudINlozllHhMBGRDCEeGC/0mY/LF50hP6vwEbl1ub0J1SlqlvTn3rrX7dumvtjSKxfQipwbCpG8QzGi7ZsSe78Xg7VIGtDVk0Vh4+PbHVJ6GB8pUmFpQ4vVa6sY0CAwEAAaNRME8wCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFNhpUMHsIixtS9g6y/FyNrayg9V6MBAGCSsGAQQBgjcVAQQDAgEAMA0GCSqGSIb3DQEBCwUAA4IBAQCrEjJWFyZR3VFoIvZxUztGiWSjELJGD0vH42hONh6GrzxHadhZcQFmQsi4SmS9TUhPqyj+mUzreWziMcogqTYisSmF6h/cyAujdnLPbR//spGSOvLlV+43P57FmpQ+c+bBV8CJq3e0uvxt2h/9v5Du20fE/Zb6iPESMSjzhEoCPosozELpEqwKTzwGLsyqgLSNWW/+Ov+DGr+cE8pHsXZy8yhkbDY5wrbHMCyrRuXFXwYLpoMcUKMOWUCq+K3TSQ2AmGUtzY3KMfC7YCJj+mrCniWmvncryUpkY3hPplglevWAFQx4hslOU618gt4IpBXyLlIC0DqyAVMHJqF7WozV\\n-----END CERTIFICATE-----\"\r\n        },\r\n\r\n                \"iis-pool\": {\r\n                    \"class\": \"Pool\",  \r\n                        \"members\": [\r\n                            {\r\n                            \"serverAddresses\": [\r\n                            \"10.1.20.16\"\r\n                            ],\r\n                            \"servicePort\": 80\r\n                            }\r\n                        ],\r\n                    \"monitors\": [\r\n                        \"tcp\"\r\n                    ]\r\n                }\r\n\r\n            }\r\n       }\r\n    }\r\n\r\n}"
+					"raw": "{\r\n    \"class\": \"AS3\",\r\n    \"action\": \"deploy\",\r\n    \"persist\": true,\r\n    \"declaration\": {\r\n       \"class\": \"ADC\",\r\n       \"schemaVersion\": \"3.14.0\",\r\n       \"id\": \"APM\",\r\n       \"{{PARTITION_NAME}}\": {\r\n          \"class\": \"Tenant\",\r\n          \"{{VS1_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS1_NAME}}\": {\r\n                \"class\": \"Service_HTTPS\",\r\n                \"virtualAddresses\": [\r\n                   \"{{BIGIP2_ADDRESS1}}\"\r\n                ],\r\n                \"virtualPort\": 443,\r\n                \"serverTLS\": \"{{VS1_NAME}}-clientssl\",\r\n                \"clientTLS\": \"{{VS1_NAME}}-serverssl\",\r\n                \"iRules\": [\"{{VS1_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS1_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS1_NAME}}-clientssl\": {\r\n                \"class\": \"TLS_Server\",\r\n                  \"certificates\": [\r\n                     {\r\n                      \"certificate\": \"tlsserver_local_cert\"\r\n                     }\r\n                  ]\r\n                },\r\n                \"tlsserver_local_cert\": {\r\n                    \"class\": \"Certificate\",\r\n                    \"certificate\": {\"bigip\":\"/Common/acme.com-wildcard\"},\r\n                    \"privateKey\": {\"bigip\":\"/Common/acme.com-wildcard\"}\r\n                }, \r\n                \"{{VS1_NAME}}-serverssl\": {\r\n                \"class\": \"TLS_Client\"\r\n                },\r\n                \"{{VS1_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS1_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS1_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS1_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n             \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 443,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          },\r\n         \r\n           \"{{VS2_NAME}}\": {\r\n             \"class\": \"Application\",\r\n             \"template\": \"generic\",\r\n             \"{{VS2_NAME}}\": {\r\n                \"class\": \"Service_HTTP\",\r\n                \"virtualAddresses\": [\r\n                   \"192.168.0.1\"\r\n                ],\r\n                \"virtualPort\": 80,\r\n                \"iRules\": [\"{{VS2_NAME}}-irule\"],\r\n                \"profileAccess\": {\r\n        \t\t\t\"use\": \"{{VS2_NAME}}-psp\"\r\n        \t\t},\r\n                \"pool\": \"iis-pool\",\r\n                \"snat\": \"auto\"\r\n             },\r\n             \"{{VS2_NAME}}-irule\": {\r\n        \t\t\t\"class\": \"iRule\",\r\n        \t\t\t\"iRule\": {\r\n            \t\t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/irules/{{VS2_NAME}}.irule\"\r\n        \t\t}\r\n                },\r\n                \"{{VS2_NAME}}-psp\": {\r\n                \t\"class\": \"Access_Profile\",\r\n                \t\"url\": \"{{FILES_BASE}}/{{PARTITION_NAME}}/policies/profile_Common_{{VS2_NAME}}-psp.conf.tar\",\r\n                \t\"ignoreChanges\": true\r\n                },\r\n              \"iis-pool\": {\r\n                \"class\": \"Pool\",\r\n                \"monitors\": [\r\n                   \"tcp\"\r\n                ],\r\n                \"members\": [{\r\n                   \"servicePort\": 80,\r\n                   \"serverAddresses\": [\r\n                     \"10.1.20.6\"\r\n                   ]\r\n                }]\r\n             }\r\n          }\r\n       }\r\n    }\r\n}\r\n       \r\n  "
 				},
 				"url": {
 					"raw": "https://10.1.1.5/mgmt/shared/appsvcs/declare",
@@ -1696,7 +1697,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "56b1e11e-eac3-47d1-99f3-17a8ebefdf27",
+						"id": "d546f3ee-073d-4014-ab45-bef2eff6be83",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');",
@@ -1715,7 +1716,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d7d22852-1a92-4377-9e79-38d2b3ae24ea",
+						"id": "12845902-bcd4-4c1a-b3bb-c07cecff91c3",
 						"exec": [
 							""
 						],
@@ -1776,7 +1777,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "693a482b-f3f9-4c43-8f92-c7b0da119425",
+						"id": "dc77df10-c609-4146-8348-9e3834f5077b",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -1794,7 +1795,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "eebed8a1-f7a4-48e8-b067-4d6ebddcc79c",
+						"id": "6de1962d-1460-47c5-8b47-32d40c7db96f",
 						"exec": [
 							"setTimeout(function(){}, 2000);",
 							"",
@@ -1834,7 +1835,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\": \"/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS_NAME}}\",\r\n\"destination\": \"{{BIGIP2_ADDRESS}}:443\"\r\n}"
+					"raw": "{\r\n\"name\": \"/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS1_NAME}}\",\r\n\"destination\": \"{{BIGIP2_ADDRESS1}}:443\"\r\n}"
 				},
 				"url": {
 					"raw": "https://10.1.1.11/mgmt/tm/gtm/server/~Common~bigip2.f5lab.local/virtual-servers/",
@@ -1864,7 +1865,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0bc5da11-e5f8-4b80-bd2f-7b8202c1ad3e",
+						"id": "137ee48f-afd8-45e7-8442-b8ed6cc1d796",
 						"exec": [
 							"setTimeout(function(){},5000);",
 							"",
@@ -1880,7 +1881,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "da91e0b5-6c7b-4b59-a222-8d433df429d9",
+						"id": "1c73fe6d-fa22-42ae-9a90-c8eedc148b2e",
 						"exec": [
 							"if (responseCode.code === 200) {",
 							"pm.collectionVariables.set('PRIOR_RESPONSE', 'OK' );",
@@ -1922,10 +1923,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"name\":\"bigip2.f5lab.local:/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS_NAME}}\"\r\n\t\r\n\t\r\n}"
+					"raw": "{\r\n\"name\":\"bigip2.f5lab.local:/{{PARTITION_NAME}}/{{PATH_NAME}}/{{VS1_NAME}}\"\r\n\t\r\n\t\r\n}"
 				},
 				"url": {
-					"raw": "https://10.1.1.11/mgmt/tm/gtm/pool/a/~{{VS_NAME}}~Application~{{VS_NAME}}-pool/members",
+					"raw": "https://10.1.1.11/mgmt/tm/gtm/pool/a/~{{PARTITION_NAME}}~{{VS1_NAME}}~{{VS1_NAME}}-pool/members",
 					"protocol": "https",
 					"host": [
 						"10",
@@ -1939,7 +1940,7 @@
 						"gtm",
 						"pool",
 						"a",
-						"~{{VS_NAME}}~Application~{{VS_NAME}}-pool",
+						"~{{PARTITION_NAME}}~{{VS1_NAME}}~{{VS1_NAME}}-pool",
 						"members"
 					]
 				}
@@ -1951,7 +1952,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "01b23b23-ae04-4159-9c0b-455b8006cfac",
+				"id": "3dcee798-d54d-40f7-8f4e-b1888e803bc9",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1961,7 +1962,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "afbd2872-3a31-4d58-a906-0c23221c2c40",
+				"id": "340e7cdc-485c-4547-8617-7d289c4a64ef",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1971,62 +1972,68 @@
 	],
 	"variable": [
 		{
-			"id": "4541f0da-6774-4c8e-bc01-15521f2ab732",
+			"id": "ea88d335-425e-4bdc-986f-35dcbdeaea59",
 			"key": "PARTITION_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fb81edf5-393f-4a15-8501-67eb6435e70f",
+			"id": "ef355fbf-3c42-4450-a348-ba5202e45aa6",
 			"key": "PRIOR_RESPONSE",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "9b172a39-cbdb-4c8c-9e9b-a30b0d547021",
+			"id": "ec29a35c-a6ed-43f3-8d26-c511dd9c2806",
 			"key": "BIGIP1_ADDRESS1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e66424a3-3775-4d44-859c-1224dcd0f89f",
+			"id": "f3ca091b-152a-441e-a86e-29aded3f6eaf",
 			"key": "BIGIP1_ADDRESS2",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "9a1c71c8-12ec-44ce-bc7a-9e625c2d0688",
+			"id": "fe2be0db-1496-43fd-8da6-60b9c5937810",
 			"key": "PATH_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "365fd7c4-40dc-4365-8f9d-baaf3a0fee90",
+			"id": "763c9e6b-30e0-4a67-8f80-f1ba140065e4",
 			"key": "VS1_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fba6d750-aeb5-4406-9f0f-cf0dd9c7ca0d",
+			"id": "605ec2e3-8041-4944-a768-8893aa792ba9",
 			"key": "VS2_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "17696214-768b-4f92-9ce4-7ea11bdf347e",
+			"id": "dae5ea10-6785-4641-a34e-09c1cdafe488",
 			"key": "DNS1_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "080719a7-8e45-4dc5-b482-754fd7c5b862",
+			"id": "933471bf-9f4d-4edb-b84c-a1367f6310f9",
 			"key": "DNS2_NAME",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "ffbd6015-23f9-48dd-93b8-4a5a3faa9f1b",
+			"id": "d446efd7-5328-45ff-8745-528aa64ad58c",
 			"key": "VS3_NAME",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f954f803-04f9-4f7a-ac40-ab8eca6b6f5d",
+			"key": "BIGIP2_ADDRESS1",
 			"value": "",
 			"type": "string"
 		}

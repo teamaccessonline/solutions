@@ -26,18 +26,18 @@ Configuration Comments
 
 Access Blueprint Revision
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  - 42
+  - 44
 
 Postman Collection(s)
 ^^^^^^^^^^^^^^^^^^^^
-  - sp.acme.com-create.postman_collection.json
-  - sp.acme.com-delete.postman_collection.json
+  - solution7-create.postman_collection.json
+  - solution7-delete.postman_collection.json
 
 
 APM Profile(s) 
 ^^^^^^^^^^^^
-  - profile_Common_sp.acme.com-psp.conf.tar
-  - profile_Common_idp.acme.com-psp.conf.tar
+  - profile_Common_receive-sideband-psp.conf.tar
+  - profile_Common_send-sideband-psp.conf.tar
 
 
 BIG-IP Versions Tested
