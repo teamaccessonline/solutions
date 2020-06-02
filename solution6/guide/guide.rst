@@ -17,8 +17,6 @@ Policy Walk-Through
 7. If the LDAP Query is unsuccessful, the user proceeds down the failback branch to the Deny Terminal
 8. If the OCSP check is unsuccessful, the user proceeds down the failback branch to the Deny Terminal
 9. If the user fails to present a certificate, the user proceeds down the failback branch to the Deny Terminal
-                                       
-
                                                                                     
 
 
@@ -38,9 +36,8 @@ Policy Agent Configuration
 
   |image004|
 
-.. note:: Code for UPN Extraction
-
-  session.custom.ephemeral.upn = set x509e_fields [split [mcget {session.ssl.cert.x509extension}] "\n"]; # For each element in the list: foreach field $x509e_fields { # If the element contains UPN: if { $field contains "othername:UPN" } { ## set start of UPN variable - updated for new CACs set start [expr {[string first "othername:UPN<" $field] +14}] # UPN format is <user@domain> # Return the UPN, by finding the index of opening and closing brackets, then use string range to get everything between. return [string range $field $start [expr { [string first ">" $field $start] - 1 } ] ];??} } # Otherwise return UPN Not Found: return "UPN-NOT-FOUND";
+.. role:: custom
+:custom: `session.custom.ephemeral.upn = set x509e_fields [split [mcget {session.ssl.cert.x509extension}] "\n"]; # For each element in the list: foreach field $x509e_fields { # If the element contains UPN: if { $field contains "othername:UPN" } { ## set start of UPN variable - updated for new CACs set start [expr {[string first "othername:UPN<" $field] +14}] # UPN format is <user@domain> # Return the UPN, by finding the index of opening and closing brackets, then use string range to get everything between. return [string range $field $start [expr { [string first ">" $field $start] - 1 } ] ];??} } # Otherwise return UPN Not Found: return "UPN-NOT-FOUND";`
 
 - The LDAP query connects to the LDAP server to the dc=f5lab,dc=local DN for a user that contains the userPrincipalName matching the value stored in session.custom.upn
 - The LDAP query requests the sAMAccountName attribute if the user is found
