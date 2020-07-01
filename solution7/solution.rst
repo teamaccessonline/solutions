@@ -1,7 +1,7 @@
-Solution: (In Development) SAML SP with sideband to update AD Logon Timestamp
+Solution:  Inline SAML with Kerberos sideband
 ======================================================================================
 
-This solution documents all the necessary pieces required to create a set of APM policies  that updates the AD lastlogontimestamp when only using SAML.  
+This solution documents all the necessary pieces required to create a set of APM policies that updates the AD lastlogontimestamp when only using SAML.  
 
 Objective:
 ----------

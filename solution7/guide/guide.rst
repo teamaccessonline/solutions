@@ -15,16 +15,16 @@ Send-Sideband Policy Walk-Through
 
 |image001|  
 
-1. A user is prompted to select their certificate.  
-  - The validation of the user certificates is controlled via CA bundles selected in the Client-side SSL Profile.                                            
-2. The certificate is validated by OCSP if the user presents a certificate issued by a trusted CA
-3. The Othername field is extracted from the certificate
-4. A LDAP query is performed to collect the sAMAccountName of the user 
-5. The domain and username variables are set
-6. The user is granted access via the Allow Terminal
-7. If the LDAP Query is unsuccessful, the user proceeds down the failback branch to the Deny Terminal
-8. If the OCSP check is unsuccessful, the user proceeds down the failback branch to the Deny Terminal
-9. If the user fails to present a certificate, the user proceeds down the failback branch to the Deny Terminal
+1. A user is redirect to the SAML IDP 
+  - Once authenticated at the IDP the user is redirected back to the BIG-IP.                                            
+2. If the SAML assertion is valid an AD Query is performed to match the email address in the assertion to an AD Account.
+  -  The attribute sAMAccountName is returned to be used in the send-sideband irule
+3. The session variable session.logon.last.user is set from the SAML Assertion NameIDAttribute session.saml.last.nameIDValue
+4. iRule Event send-sideband is triggered
+5. The user is granted access via the Allow Terminal
+6. If the LDAP Query is unsuccessful, the user proceeds down the fallback branch to the Deny Terminal
+7. If the SAML Auth is unsuccessful, the user proceeds down the fallback branch to the Deny Terminal
+
                                        
 
                                                                                     
@@ -118,6 +118,12 @@ Kerberos SSO Object
 Receive-Sideband Policy Walk-Through
 -------------------------------------
 
+|image002|
+
+1. The session variable session.logon.last.domain is set to the AD Domain f5lab.local
+2. The sideband request is granted access via the Allow Terminal
+
+
 
 User1's Perspective
 -------------------------------------
@@ -125,13 +131,13 @@ User1's Perspective
 User1
 ^^^^^^
 
-#. User1 is prompted to select their certificate
+#. User1 is connects to https://sp.acme.com and is redirect to the external IDP
 
-   |image012|
+   |image003|
 
-#. If successful the user is granted access to the application
+#. After successful
 
-   |image013|
+   |image004|
 
 
 .. |image001| image:: media/001.png
