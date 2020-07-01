@@ -11,4 +11,5 @@ when HTTP_REQUEST {
 when ACCESS_SESSION_STARTED {
 #Stores the tcl username varible as a session variable
 ACCESS::session data set session.logon.last.username $username
+
 }
